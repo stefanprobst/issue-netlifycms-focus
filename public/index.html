@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Netlify CMS</title>
+  </head>
+  <body>
+    <script src="dist/netlify-cms.js"></script>
+    <!-- prettier-ignore -->
+    <script>
+      CMS.registerEditorComponent({
+        id: 'block',
+        label: 'Block',
+        fields: [
+          { name: 'children', label: 'Content', widget: 'markdown' },
+        ],
+        pattern: /^<Block>\n([^]*)\n<\/Block>$/,
+        fromBlock(match) {
+          return {
+            children: match[1]
+          }
+        },
+        toBlock(data) {
+          return `<Block>
+${data.children ?? ''}
+</Block>`
+        },
+        toPreview(data) {
+          return 'Block'
+        }
+      })
+    </script>
+  </body>
+</html>

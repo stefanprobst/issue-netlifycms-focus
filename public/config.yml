@@ -1,0 +1,22 @@
+backend:
+  name: github
+  branch: main
+
+media_folder: public/media
+public_folder: /media
+
+local_backend: true
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: content/posts
+    create: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - name: body
+        label: Content
+        widget: markdown
